@@ -83,14 +83,14 @@ for epoch in range(EPOCH):
         loss.backward()
         optimizer.step()
 
-        # if step % 50 == 0:
-        #     test_output = cnn(test_x)
-        #     pred_y = torch.max(test_output, 1)[1].data.squeeze()
-        #     accuracy = sum(pred_y == test_y) / test_y.size(0)
-        #     # accuracy = float((pred_y == test_y.data.numpy()).astype(int).sum()) / float(test_y.size(0))
-        #     print('|Epoch:', epoch,
-        #           '|Train loss: %.4f' % loss.data,
-        #           '|Test accuracy:', accuracy)
+        if step % 50 == 0:
+            test_output = cnn(test_x)
+            pred_y = torch.max(test_output, 1)[1].data.squeeze()
+            accuracy = sum(pred_y == test_y) / test_y.size(0)
+            # accuracy = float((pred_y == test_y.data.numpy()).astype(int).sum()) / float(test_y.size(0))
+            print('|Epoch:', epoch,
+                  '|Train loss: %.4f' % loss.data,
+                  '|Test accuracy:', accuracy)
 
 end_time = time.time()
 print('Train time: ', end_time-start_time, ' s')
