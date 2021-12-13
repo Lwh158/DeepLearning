@@ -41,7 +41,7 @@ h_state = None
 plt.figure(1, figsize=(12, 5))
 plt.ion()
 
-for step in range(1000):
+for step in range(500):
     start, end = step * np.pi, (step+1) * np.pi
     steps = np.linspace(start, end, TIME_STEP, dtype=np.float32, endpoint=False)
     x_np = np.sin(steps)
@@ -62,6 +62,7 @@ for step in range(1000):
     # plotting
     plt.plot(steps, y_np.flatten(), 'r-')
     plt.plot(steps, prediction.cpu().data.numpy().flatten(), 'b-')
+
     plt.draw()
     plt.pause(0.05)
 
