@@ -119,8 +119,11 @@ plt.show()
 view_data = train_data.data[:200].view(-1, 28 * 28).type(torch.FloatTensor).cuda() / 255.
 encoded_data, _ = autoencoder(view_data)
 fig = plt.figure(2)
-ax = Axes3D(fig, auto_add_to_figure=False)
-fig.add_axes(ax)
+# the two codes below is for Win10
+# ax = Axes3D(fig, auto_add_to_figure=False)
+# fig.add_axes(ax)
+# this one code below is for Linux
+ax = Axes3D(fig)
 encoded_data = encoded_data.cpu()
 X, Y, Z = encoded_data.data[:, 0].numpy(), encoded_data.data[:, 1].numpy(), encoded_data.data[:, 2].numpy()
 values = train_data.targets[:200].numpy()

@@ -25,7 +25,7 @@ train_loader = Data.DataLoader(
     dataset=train_data,
     batch_size=BATCH_SIZE,
     shuffle=True,
-    # num_workers=2,
+    num_workers=4,      # this code should be baned(?) in Win10
 )
 
 test_data = torchvision.datasets.MNIST(
